@@ -1,2 +1,4 @@
 github.com/PureWhiteWu/ppin v0.0.0-20210222034823-197eac484787 h1:hWjupfRBFdMPIUxuvE8IoBdCgs9MjhYV3/Ydzh14EJE=
 github.com/PureWhiteWu/ppin v0.0.0-20210222034823-197eac484787/go.mod h1:6pMasM0AJsj8ekFmVcy1KUfFkasrf2Rz+zzGioGFOY4=
+github.com/choleraehyq/pid v0.0.10 h1:vNQin47lzet2RMdE98+JrTN0MPuRJ3TjIlt6555sqHM=
+github.com/choleraehyq/pid v0.0.10/go.mod h1:Q1j7zyJyRuGB1PzLd085QPeM5AsLhmhD6eiLtifcX7s=
