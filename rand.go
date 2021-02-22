@@ -3,10 +3,9 @@ package rand
 import (
 	impl "math/rand"
 	"runtime"
-	"sync"
 	"time"
 
-	pid "github.com/choleraehyq/pid"
+	"github.com/PureWhiteWu/ppin"
 )
 
 const (
@@ -19,14 +18,11 @@ var (
 
 type lockedSource struct {
 	_ [cacheLineSize]byte
-	sync.Mutex
 	*impl.Rand
 }
 
 func (ls *lockedSource) Intn(n int) (r int) {
-	ls.Lock()
 	r = ls.Rand.Intn(n)
-	ls.Unlock()
 	return
 }
 
@@ -48,7 +44,10 @@ func New() FastRand {
 }
 
 func (r FastRand) Intn(n int) int {
-	return r[pid.GetPid()%shardsLen].Intn(n)
+	idx := ppin.Pin()
+	ret := r[idx%shardsLen].Intn(n)
+	ppin.Unpin()
+	return ret
 }
 
 var defaultRand FastRand
