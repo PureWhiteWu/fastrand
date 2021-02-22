@@ -45,7 +45,11 @@ func New() FastRand {
 
 func (r FastRand) Intn(n int) int {
 	idx := ppin.Pin()
-	ret := r[idx%shardsLen].Intn(n)
+	if idx > shardsLen {
+		// should not happen
+		panic("idx > shardsLen, maybe GOMAXPROCS is adjusted")
+	}
+	ret := r[idx].Intn(n)
 	ppin.Unpin()
 	return ret
 }
