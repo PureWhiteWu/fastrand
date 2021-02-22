@@ -7,7 +7,7 @@ import (
 )
 
 func BenchmarkRand(b *testing.B) {
-	r := NewRand()
+	r := New()
 	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
 		r.Intn(100)
@@ -22,7 +22,7 @@ func BenchmarkRandStd(b *testing.B) {
 }
 
 func BenchmarkRandPar(b *testing.B) {
-	r := NewRand()
+	r := New()
 	b.ResetTimer()
 	b.RunParallel(func(pb *testing.PB) {
 		for pb.Next() {
